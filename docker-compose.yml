@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  go-app:
+    image: frete-rapido-api
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: default1
+      POSTGRES_USER: developer
+      POSTGRES_DB: frete-rapido
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
