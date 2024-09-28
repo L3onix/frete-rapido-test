@@ -1,0 +1,3 @@
+- Persistir os dados da simulação no banco de dados local
+- Criar arquivo SQL para ser executado com o docker build
+- Testar rotas
