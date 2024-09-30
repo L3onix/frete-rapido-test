@@ -117,11 +117,49 @@ func (cr *CarrierRepository) GetLastCarriers(lastCarriers string) (*[]model.Carr
 		return nil, err
 	}
 
+	carrierList, err := cr.getLastCarriersResultFormat(rows)
+	rows.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	return carrierList, nil
+}
+
+func (cr *CarrierRepository) GetLastCarriersByDispatcherID(lastCarriers string, dispatcherID string) (*[]model.Carrier, error) {
+	var rows *sql.Rows
+	var err error
+	queryStr := "select * from carrier where dispatcher_id = $1 order by id desc"
+	if lastCarriers != "" {
+		queryStr += " limit $2"
+	}
+	query, err := cr.connection.Prepare(queryStr)
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+
+	rows, err = query.Query(dispatcherID, lastCarriers)
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+
+	carrierList, err := cr.getLastCarriersResultFormat(rows)
+	rows.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	return carrierList, nil
+}
+
+func (cr *CarrierRepository) getLastCarriersResultFormat(rows *sql.Rows) (*[]model.Carrier, error) {
 	var carrierList []model.Carrier
 	var carrierObj model.Carrier
 
 	for rows.Next() {
-		err = rows.Scan(
+		err := rows.Scan(
 			&carrierObj.ID,
 			&carrierObj.Name,
 			&carrierObj.Service,
@@ -136,8 +174,5 @@ func (cr *CarrierRepository) GetLastCarriers(lastCarriers string) (*[]model.Carr
 
 		carrierList = append(carrierList, carrierObj)
 	}
-
-	rows.Close()
-
 	return &carrierList, nil
 }

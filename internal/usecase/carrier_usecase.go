@@ -38,6 +38,9 @@ func (cu *CarrierUseCase) GetCarrierById(id int) (*model.Carrier, error) {
 	return carrier, nil
 }
 
-func (cu *CarrierUseCase) GetLastCarriers(lastCarriers string) (*[]model.Carrier, error) {
+func (cu *CarrierUseCase) GetLastCarriers(lastCarriers string, dispatcherID string) (*[]model.Carrier, error) {
+	if dispatcherID != "" {
+		return cu.repository.GetLastCarriersByDispatcherID(lastCarriers, dispatcherID)
+	}
 	return cu.repository.GetLastCarriers(lastCarriers)
 }

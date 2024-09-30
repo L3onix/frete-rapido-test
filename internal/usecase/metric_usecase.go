@@ -12,6 +12,6 @@ func NewMetricUseCase(carrierUseCase CarrierUseCase) MetricUsecase {
 	}
 }
 
-func (mu *MetricUsecase) GetMetrics(lastQuotes string) (*[]model.Carrier, error) {
-	return mu.carrierUseCase.GetLastCarriers(lastQuotes)
+func (mu *MetricUsecase) GetMetrics(lastQuotes string, dispatcherID string) (*[]model.Carrier, error) {
+	return mu.carrierUseCase.GetLastCarriers(lastQuotes, dispatcherID)
 }

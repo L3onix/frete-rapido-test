@@ -28,8 +28,9 @@ func (mc *metricController) GetMetrics(ctx *gin.Context) {
 			return
 		}
 	}
+	dispatcherID := ctx.Query("dispatcher_id")
 
-	metrics, err := mc.usecase.GetMetrics(lastQuotes)
+	metrics, err := mc.usecase.GetMetrics(lastQuotes, dispatcherID)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, err)
 		return
