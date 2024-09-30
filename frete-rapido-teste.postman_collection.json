@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "0e6550f8-b90b-410a-8ddd-8d5cab6afe9d",
+		"name": "frete-rapido-teste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3052261"
+	},
+	"item": [
+		{
+			"name": "/api/v3/quote/simulate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"shipper\": {\n    \"registered_number\": \"25438296000158\",\n    \"token\": \"1d52a9b6b78cf07b08586152459a5c90\",\n    \"platform_code\": \"5AKVkHqCn\"\n  },\n  \"recipient\": {\n    \"type\": 0,\n    \"registered_number\": \"\",\n    \"state_inscription\": \"\",\n    \"country\": \"BRA\",\n    \"zipcode\": 1311000\n  },\n  \"dispatchers\": [\n    {\n      \"registered_number\": \"25438296000158\",\n      \"zipcode\": 29161376,\n      \"total_price\": 905,\n      \"volumes\": [\n        {\n          \"category\": \"1\",\n          \"amount\": 1,\n\t\t\t\t\t\"unitary_price\": 349,\n          \"unitary_weight\": 5,\n          \"price\": 349,\n          \"sku\": \"abc-teste-123\",\n          \"height\": 0.2,\n          \"width\": 0.2,\n          \"length\": 0.2\n        },\n        {\n          \"category\": \"7\",\n          \"amount\": 2,\n\t\t\t\t\t\"unitary_price\": 556,\n          \"unitary_weight\": 4,\n          \"price\": 556,\n          \"sku\": \"abc-teste-527\",\n          \"height\": 0.4,\n          \"width\": 0.6,\n          \"length\": 0.15\n        }\n      ]\n    }\n  ],\n  \"channel\": \"\",\n  \"filter\": 0,\n  \"limit\": 0,\n  \"identification\": \"\",\n  \"reverse\": false,\n  \"simulation_type\": [\n    0\n  ],\n  \"returns\": {\n    \"composition\": false,\n    \"volumes\": false,\n    \"applied_rules\": false\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://sp.freterapido.com/api/v3/quote/simulate"
+			},
+			"response": []
+		},
+		{
+			"name": "/ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"url": "http://localhost:8080/ping"
+			},
+			"response": []
+		},
+		{
+			"name": "/carrier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"url": "http://localhost:8080/carrier/"
+			},
+			"response": []
+		},
+		{
+			"name": "/carrier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Gato\",\n\t\"service\": \"aéreo\",\n\t\"deadline\": 1,\n\t\"price\": 17.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/carrier"
+			},
+			"response": []
+		},
+		{
+			"name": "/quote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"recipient\":{\n      \"address\":{\n         \"zipcode\":\"01311000\"\n      }\n   },\n   \"volumes\":[\n      {\n         \"category\":1,\n         \"amount\":1,\n         \"unitary_weight\":5,\n         \"price\":349,\n         \"sku\":\"abc-teste-123\",\n         \"height\":0.2,\n         \"width\":0.2,\n         \"length\":0.2\n      },\n      {\n         \"category\":7,\n         \"amount\":2,\n         \"unitary_weight\":4,\n         \"price\":556,\n         \"sku\":\"abc-teste-527\",\n         \"height\":0.4,\n         \"width\":0.6,\n         \"length\":0.15\n      }\n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/quote"
+			},
+			"response": []
+		},
+		{
+			"name": "/metrics?last_quotes={}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "insomnia/9.3.3"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/metrics?last_quotes=2&dispatcher_id=66fa2c5dcd8a5bd246f578b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "last_quotes",
+							"value": "2"
+						},
+						{
+							"key": "dispatcher_id",
+							"value": "66fa2c5dcd8a5bd246f578b1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
