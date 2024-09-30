@@ -16,15 +16,16 @@ do projeto.
 Na rota **/metrics** eu adicionei um parâmetro opcional
 (**dispatcher_id**), acredito que isso seria a melhor forma de
 identificar os resultados salvos no banco a partir da rota **/quote**, 
-gerando métricas mais coesas.
+gerando métricas mais coesas. O dado **dispatcher_id** pode ser
+visualizado no response da rota **/quote**. 
 
 Durante o desenvolvimento eu acabei criando outras rotas, porém foi
 apenas uma forma melhor de estruturar minhas ideias, não foquei em
 manter elas funcionais.
 
-Adicionei uma configuração no conteiner do aplicação go que espera
-o postgres enviar um sinal de que terminou todo o seu build para aí
-sim executar o container go, dessa forma pode ser que a aplicação
+Adicionei uma configuração no conteiner da aplicação go que espera
+o postgres enviar um sinal de que terminou todo o seu build para, aí
+sim, executar o container go. Dessa forma pode ser que a aplicação
 demore alguns segundos para subir realmente, você pode usar a
 rota **/ping** para verificar se o container go está up, ou pode
 visualizar os logs do container.
