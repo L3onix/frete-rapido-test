@@ -14,7 +14,8 @@ func SetupRoutes(database *sql.DB, server *gin.Engine) *gin.Engine {
 	CarrierUseCase := usecase.NewCarrierUseCase(CarrierRepository)
 	CarrierController := controller.NewCarrierController(CarrierUseCase)
 
-	QuoteController := controller.NewQuoteController()
+	QuoteUseCase := usecase.NewQuoteUseCase(CarrierUseCase)
+	QuoteController := controller.NewQuoteController(QuoteUseCase)
 
 	MetricUsecase := usecase.NewMetricUseCase(CarrierUseCase)
 	MetricController := controller.NewMetricController(MetricUsecase)

@@ -51,14 +51,15 @@ func (cr *CarrierRepository) GetCarriers() ([]model.Carrier, error) {
 
 func (cr *CarrierRepository) CreateCarrier(carrier model.Carrier) (int, error) {
 	var id int
-	query, err := cr.connection.Prepare("insert into carrier (name, service, deadline, price) " +
-		"values ($1, $2, $3, $4) returning id")
+
+	queryStr := "insert into carrier (name, service, deadline, price, dispatcher_id) values ($1, $2, $3, $4, $5) returning id"
+	query, err := cr.connection.Prepare(queryStr)
 	if err != nil {
 		fmt.Println(err)
 		return 0, err
 	}
 
-	err = query.QueryRow(carrier.Name, carrier.Service, carrier.Deadline, carrier.Price).Scan(&id)
+	err = query.QueryRow(carrier.Name, carrier.Service, carrier.Deadline, carrier.Price, carrier.DispatcherID).Scan(&id)
 	if err != nil {
 		fmt.Println(err)
 		return 0, err
@@ -126,6 +127,7 @@ func (cr *CarrierRepository) GetLastCarriers(lastCarriers string) (*[]model.Carr
 			&carrierObj.Service,
 			&carrierObj.Deadline,
 			&carrierObj.Price,
+			&carrierObj.DispatcherID,
 		)
 		if err != nil {
 			fmt.Println(err)
