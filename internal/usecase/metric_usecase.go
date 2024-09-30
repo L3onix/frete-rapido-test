@@ -19,7 +19,7 @@ func NewMetricUseCase(carrierUseCase CarrierUseCase) MetricUsecase {
 
 func (mu *MetricUsecase) GetMetrics(lastQuotes string, dispatcherID string) (model.Metrics, error) {
 	carriers, err := mu.carrierUseCase.GetLastCarriers(lastQuotes, dispatcherID)
-	if err != nil {
+	if err != nil || len(*carriers) == 0 {
 		return model.Metrics{}, err
 	}
 
