@@ -130,16 +130,13 @@ func (cr *CarrierRepository) GetLastCarriersByDispatcherID(lastCarriers string, 
 	var rows *sql.Rows
 	var err error
 	queryStr := "select * from carrier where dispatcher_id = $1 order by id desc"
-	if lastCarriers != "" {
-		queryStr += " limit $2"
-	}
 	query, err := cr.connection.Prepare(queryStr)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
 	}
 
-	rows, err = query.Query(dispatcherID, lastCarriers)
+	rows, err = query.Query(dispatcherID)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err

@@ -35,7 +35,7 @@ func (mc *metricController) GetMetrics(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, err)
 		return
 	}
-	if metrics == nil {
+	if len(metrics.Carriers) == 0 {
 		ctx.JSON(http.StatusNotFound, gin.H{
 			"error": "Banco de dados não possui métricas",
 		})
